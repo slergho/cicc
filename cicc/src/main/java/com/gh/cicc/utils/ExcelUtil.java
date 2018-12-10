@@ -1,10 +1,8 @@
 package com.gh.cicc.utils;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -61,36 +59,14 @@ public class ExcelUtil {
         return null;
     }
 
-    //测试导入
-   /* public static void main(String[] args) {
-        try {
-            String fileName = "f:/test.xlsx";
-            List<Object[]> list = importExcel(fileName);
-            for (int i = 0; i < list.size(); i++) {
-                Insurance insurance = new Insurance();
-                insurance.setInsuredName((String) list.get(i)[0]);
-                insurance.setInsuredIDNumber((String) list.get(i)[1]);
-                insurance.setPlateNumber((String) list.get(i)[2]);
-                insurance.setVin((String) list.get(i)[3]);
-                insurance.setFrameNumber((String) list.get(i)[4]);
-                insurance.setAddress((String) list.get(i)[5]);
-                insurance.setInsuredPhone((String) list.get(i)[6]);
-                insurance.setVehicleBrand((String) list.get(i)[7]);
-                insurance.setColors((String) list.get(i)[8]);
-                insurance.setBuyCarDate((Date) list.get(i)[9]);
-                insurance.setAllRiskScenarioName((String) list.get(i)[10]);
-                insurance.setTheftScenarioName((String) list.get(i)[11]);
-                insurance.setAllRiskPremium((String) list.get(i)[12]);
-                insurance.setAllRiskDuration((String) list.get(i)[13]);
-                insurance.setAllRiskInsuredDate((Date) list.get(i)[14]);
-                insurance.setTheftPremium((String) list.get(i)[15]);
-                insurance.setTheftDuration((String) list.get(i)[16]);
-                insurance.setTheftInsuredDate((Date) list.get(i)[17]);
-                System.out.println(insurance.toString());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public String getValue(XSSFCell xssfRow) {
+        if (xssfRow.getCellType() == CellType.BOOLEAN) {
+            return String.valueOf(xssfRow.getBooleanCellValue());
+        } else if (xssfRow.getCellType() == CellType.NUMERIC) {
+            return String.valueOf(xssfRow.getNumericCellValue());
+        } else {
+            return String.valueOf(xssfRow.getStringCellValue());
         }
-    }*/
+    }
+    }
 
-}

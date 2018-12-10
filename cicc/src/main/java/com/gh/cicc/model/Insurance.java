@@ -154,4 +154,5 @@ public class Insurance implements Serializable {
                 ", theftInsuredDate=" + theftInsuredDate +
                 '}';
     }
+
 }
